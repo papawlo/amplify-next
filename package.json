@@ -2,6 +2,7 @@
   "name": "amplify-next",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://d35e7xto04m4hv.cloudfront.net/",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
