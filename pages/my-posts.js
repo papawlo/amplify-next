@@ -1,25 +1,27 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { API } from 'aws-amplify'
-import { listPosts } from '../graphql/queries'
+import { API, Auth } from 'aws-amplify'
+import { listPosts, postsByUsername } from '../graphql/queries'
 
-export default function Home() {
+export default function MyPosts() {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     fetchPosts()
 
   }, []);
   async function fetchPosts() {
+      const {username} = await Auth.currentAuthenticatedUser()
     const postData = await API.graphql({
-      query: listPosts
+      query: postsByUsername,
+      variables:{username}
     })
-    setPosts(postData.data.listPosts.items)
+    setPosts(postData.data.postsByUsername.items)
   }
 
   return (
     <div>
     <h1 className="text-3xl font-semibold tracking-wide mt-6 mb-2">
-      Posts
+     My Posts
     </h1>
     {
       posts.map((post, index) => (
