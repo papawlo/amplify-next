@@ -9,9 +9,9 @@ A full stack cloud application with [Next.js](https://nextjs.org/), [Tailwind](h
 
 ![App preview](images/preview1.jpg)
 
-![App preview](images/preview12.png)
+![App preview](images/preview2.png)
 
-![App preview](images/preview13.png)
+![App preview](images/preview3.png)
 
 </details>
 
