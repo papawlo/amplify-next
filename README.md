@@ -1,3 +1,28 @@
+# Full Stack Cloud with Next.js, Tailwind, and AWS
+
+![Next.js Amplify Workshop](images/banner.jpg)
+
+A full stack cloud application with [Next.js](https://nextjs.org/), [Tailwind](https://tailwindcss.com/), & [AWS Amplify](https://docs.amplify.aws/).
+
+<details>
+  <summary>App Preview</summary>
+
+![App preview](images/preview1.jpg)
+
+![App preview](images/preview12.png)
+
+![App preview](images/preview13.png)
+
+</details>
+
+[Demo](https://d35e7xto04m4hv.cloudfront.net/)
+
+### Overview
+
+We'll start from scratch, creating a new Next.js app. We'll then, step by step, use the [Amplify CLI](https://github.com/aws-amplify/amplify-cli) to build out and configure our cloud infrastructure and then use the [Amplify JS Libraries](https://github.com/aws-amplify/amplify-js) to connect the Next.js app to the APIs we create using the CLI.
+
+The app will be a multi-user blogging platform with a markdown editor. When you think of many types of applications like Instagram, Twitter, or Facebook, they consist of a list of items and often the ability to drill down into a single item view. The app we will be building will be very similar to this, displaying a list of posts with data like the title, content, and author of the post.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
