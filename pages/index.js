@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { API } from 'aws-amplify'
+import { API, Storage } from 'aws-amplify'
 import { listPosts } from '../graphql/queries'
 
 export default function Home() {
@@ -13,7 +13,18 @@ export default function Home() {
     const postData = await API.graphql({
       query: listPosts
     })
-    setPosts(postData.data.listPosts.items)
+    const { items } = postData.data.listPosts
+    // Fetch images from S3 for posts that contain a cover image
+    const postsWithImages = await Promise.all(items.map(async post => {
+      if (post.coverImage) {
+        post.coverImage = await Storage.get(post.coverImage)
+      }else{
+        post.coverImage = "https://placehold.it/56x56"
+
+      }
+      return post
+    }))
+    setPosts(postsWithImages)
   }
 
   return (
@@ -24,9 +35,16 @@ export default function Home() {
     {
       posts.map((post, index) => (
         <Link key={index} href={`/posts/${post.id}`}>
-        <div className="cursor-pointer border-b border-gray-300 mt-8 pb-4">
-          <h2 className="text-xl font-semibold">{post.title}</h2>
-          <p className="text-gray-500 mt-2">Author: {post.username}</p>
+           <div className="my-6 pb-6 border-b border-gray-300	flex">
+        {
+              post.coverImage && <img src={post.coverImage} className="w-14" />
+            }
+
+         <div className="cursor-pointer mt-2 ml-4">
+              <h2 className="text-xl font-semibold">{post.title}</h2>
+              <p className="text-gray-500 mt-2">Author: {post.username}</p>
+            </div>
+
         </div>
       </Link>
     ))

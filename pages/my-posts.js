@@ -26,9 +26,9 @@ export default function MyPosts() {
           <div className="cursor-pointer border-b border-gray-300 mt-8 pb-4">
             <h2 className="text-xl font-semibold">{post.title}</h2>
             <p className="text-gray-500 mt-2">Author: {post.username}</p>
-            <div class="flex flex-row">
+            <div className="flex flex-row">
               <Link href={`/edit-post/${post.id}`}>
-                <a className="text-sm mr-4 text-blue-500 flex flex-row items-center">
+                <a className="text-sm mr-4 text-blue-500 flex flex-row items-center rounded-full py-3 px-6">
                   <svg
                     className="w-5 inline"
                     xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +42,7 @@ export default function MyPosts() {
               </Link>
 
               <Link href={`/post/${post.id}`}>
-                <a className="text-sm mr-4 text-blue-500">
+                <a className="text-sm mr-4 text-blue-500 rounded-full py-3 px-6">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 20 20"
